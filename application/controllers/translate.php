@@ -24,8 +24,8 @@ class Translate extends CI_Controller {
 			// echo $this->data['eng'];
 			// exit;
 			if ($this->data['eng']=='error') {
-				echo "errorrrr kakak";
-				print_r($this->data['eng']);
+				$this->session->set_flashdata('msg', 'Format Inputan Salah!');
+				redirect();
 				exit;
 			}
 			//print_r($this->data['eng']); exit;
@@ -40,17 +40,17 @@ class Translate extends CI_Controller {
 
 		if (count($data) <= 0) return 'error';
 
-		if (count($data) <= 3) {
+		if (count($data) >= 1 && count($data) <= 3) {
 			//echo "mmmmmmmmmmmmmmmm   mmm";
 			$s = $this->Mymodel->getSubjek($data[0]);
 			//print_r($s); exit;
-			if (empty($s)) return 'error satu';
+			if (empty($s)) return 'error';
 			
 			$v = $this->Mymodel->getVerb($data[1]);
-			if (empty($v)) return 'error dua';
+			if (empty($v)) return 'error';
 		
 			$o = $this->Mymodel->getObjek($data[2]);
-			if (empty($o)) return 'error tiga';
+			if (empty($o)) return 'error';
 
 			$eng = $s->eng . ' ' . $v->eng . ' the ' . $o->eng;
 			//print_r($eng); exit;
@@ -61,15 +61,15 @@ class Translate extends CI_Controller {
 
 			$s = $this->Mymodel->getSubjek($data[0]);
 			//print_r($s); exit;
-			if (empty($s)) return 'error satu';
+			if (empty($s)) return 'error';
 			
 			$v = $this->Mymodel->getVerb($data[1]);
-			if (empty($v)) return 'error dua';
+			if (empty($v)) return 'error';
 
 			$c = $this->Mymodel->getCount($data[2]);
 			if (empty($c)) {
 				$o = $this->Mymodel->getObjek($data[2]);
-				if (empty($o)) return 'error tiga';
+				if (empty($o)) return 'error';
 
 				$k = $this->Mymodel->getKet($data[3]);
 				if (empty($k)) {
@@ -90,7 +90,7 @@ class Translate extends CI_Controller {
 			}
 
 			$o = $this->Mymodel->getObjek($data[3]);
-			if (empty($o)) return 'error tiga';
+			if (empty($o)) return 'error';
 
 			if (count($data) > 4 && count($data) < 6) {
 				$t = $this->Mymodel->getTime($data[4]);
@@ -106,17 +106,8 @@ class Translate extends CI_Controller {
 
 			return $s->eng . ' ' . $v->eng . ' ' . $c->eng . ' ' . $k->eng . ' ' . $o->eng . 's ' . $t->eng;
 
-
-
-
-
 		}
 		
 	}
 
-	private function ubahBahasa($data, $type) {
-		if ($type==1) {
-
-		}
-	}
 }

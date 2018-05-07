@@ -7,6 +7,11 @@
 				<h2>
 				<a href="index.html">Let's Translate</a>
 				</h2>
+				<?php if ($this->session->flashdata('msg')) 
+				{ 
+					$msg = $this->session->flashdata('msg');
+					echo "<center>" . $msg . "</center>";
+				} ?>
 		    </div>
 
 
