@@ -29,7 +29,10 @@ class Translate extends CI_Controller {
 			}
 		}
 		
-		$this->load->view('trans_v', $this->data);
+		$data = array(	'title' => 'Translate' ,
+					   	'isi'  => 'translator');
+
+		$this->load->view('layout/wrapper',$data);
 	}
 
 	private function cek_bahasa($data) {
