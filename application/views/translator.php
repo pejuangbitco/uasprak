@@ -14,39 +14,35 @@
 		<!--content-->
 
 
-		<div class="content-bottom">
+		<div class="content-bottom" style="height: 450px;">
 
 			
 			<div class="col-md-6 post-top">
 				<div class="post">
 
 					<form class="text-area" action="<?= base_url('translate')?>" method="post">
-						<textarea   required="" rows="10" name="kata" value="<?php if ($kata) echo $kata; ?>">
-						</textarea>
-					</form>
+						<input style="width :540px; height :100px; border:0px; text-indent: 20px;" type="text" name="kata" value="<?php if (isset($kata)) {echo $kata;} ?>">
+						</input>
+					
 					<div class="post-at">
-						<form class="text-sub">
+						<div class="text-sub">
 							<input type="submit" name="submit" value="translate">
-						</form>
+						</div>
 						<div class="clearfix"> </div>
 					</div>
+					</form>
 				</div>
 
 			</div>
 
 			<div class="col-md-6 post-top">
 				<div class="post">
-					<form class="text-area">
-						<textarea   required="" rows="10" readonly="">
+					<div class="text-area">
+						<input  style="width :540px; height :100px; border:0px; text-indent: 20px;" type="text" readonly="" value="<?php if ($eng) { echo $eng;} ?>">
 						
-						<?php if ($eng) { echo $eng;?>
-						
-						<?php } ?>			
-						
-						</textarea>
-					</form>
+						</input>
+					</div>
 				</div>
-				<br><br><br><br><br>
 
 			</div>
 

@@ -16,8 +16,9 @@ class Translate extends CI_Controller {
 		$this->data['eng'] = [];
 		$this->data['kata'] = "";
 		if ($this->input->post('submit')) {
-			//echo "workkkk";
+			//echo "workkkkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkwork";
 			$this->data['kata'] = $this->input->post('kata');
+
 			//explode(" ", $this->data['kata']);
 			$this->data['eng'] = $this->cek_bahasa(explode(" ", $this->data['kata']));
 			// echo $this->data['eng'];
@@ -27,12 +28,12 @@ class Translate extends CI_Controller {
 				print_r($this->data['eng']);
 				exit;
 			}
+			//print_r($this->data['eng']); exit;
 		}
 		
-		$data = array(	'title' => 'Translate' ,
-					   	'isi'  => 'translator');
-
-		$this->load->view('layout/wrapper',$data);
+		$this->data['title'] = 'Translate';
+		$this->data['isi']  = 'translator';
+		$this->load->view('layout/wrapper',$this->data);
 	}
 
 	private function cek_bahasa($data) {
