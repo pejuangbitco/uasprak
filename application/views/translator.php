@@ -6,7 +6,7 @@
 		   
 				<h2>
 
-				<a href="<?php echo base_url() ?>/translate/">Let's Translate</a>
+				<a href="<?php echo base_url() ?>translate/">Let's Translate</a>
 				</h2>
 				<?php if ($this->session->flashdata('msg')) 
 				{ 

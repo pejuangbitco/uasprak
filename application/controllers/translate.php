@@ -26,7 +26,7 @@ class Translate extends CI_Controller {
 			// exit;
 			if ($this->data['eng']=='error') {
 				$this->session->set_flashdata('msg', 'Format Inputan Salah!');
-				redirect();
+				redirect('translate');
 				exit;
 			}
 			//print_r($this->data['eng']); exit;
