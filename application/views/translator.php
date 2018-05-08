@@ -34,8 +34,13 @@
 											</div>
 											<div class="modal-body">
 												<h3 class="modal-title">Contoh inputan yang benar :</h3><br>
-												<p>saya mencuci mobil</p>
-												<p>saya mencuci mobil kemarin</p>
+												<p>saya mencuci baju</p>
+												<p>saya mencuci banyak baju</p>
+												<p>saya mencuci banyak baju merah</p>
+												<p>saya mencuci banyak baju merah kemarin</p>
+												<p>saya mencuci baju merah</p>
+												<p>saya mencuci baju merah kemarin</p>
+												<p>saya mencuci baju kemarin</p>
 												<br>
 												<h3 class="modal-title">Contoh inputan yang salah :</h3><br>
 												<p>saya</p>
