@@ -37,6 +37,20 @@ class Translate extends CI_Controller {
 		$this->load->view('layout/wrapper',$this->data);
 	}
 
+	public function welcome()
+	{
+		$this->data['title'] = 'Translate';
+		$this->data['isi']  = 'welcome';
+		$this->load->view('layout/wrapper',$this->data);
+	}
+
+	public function about()
+	{
+		$this->data['title'] = 'Translate';
+		$this->data['isi']  = 'about';
+		$this->load->view('layout/wrapper',$this->data);
+	}
+
 	private function cek_bahasa($data) {
 
 		if (count($data) <= 0) return 'hmm';

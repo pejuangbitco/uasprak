@@ -1,6 +1,6 @@
 		<!---->
 <div class="copy">
-            <p> &copy; 2018 Irsyad dkk. | Design by <a href="https://www.instagram.com/landriandani/" target="_blank">Gajelas</a> </p>
+            <p> &copy; 2018 Irsyad dkk. | Design by <a href="https://www.instagram.com/landriandani/" target="_blank">TIM</a> </p>
 	    </div>
 <!---->
 
