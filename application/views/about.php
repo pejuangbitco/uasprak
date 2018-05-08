@@ -3,8 +3,15 @@
 
             <div class="banner"> 
                 <h1 style="margin-left: 400px;">About</h1>
+            </div>
+
+            <div class="content-bottom" style="height: 400px;">
+
+                <div class="col-md-12">
+                <div class="middle-content">
+                    
                 <h3>Kelompok 5</h3>
-                <br>
+
                 <p>1. M. Irsyad Masyhudin</p>
             	
                 <p>2. M. Farid Landriandani</p>
@@ -14,10 +21,13 @@
                 <p>4. Maharani Putri Rama</p>
 
                 <p>5. Dita Ayu Savitri</p>
-            </div>
-
-
-            <br>
             
+        </div>
+        </div>
+
             </div>
+
+        </div>
+        <!----->
+
         </div>
