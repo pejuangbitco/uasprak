@@ -4,7 +4,7 @@
 <!----->
         <nav class="navbar-default navbar-static-top" role="navigation">
              <div class="navbar-header">
-               <h1> <a class="navbar-brand" href="index.html">Translate</a></h1>         
+               <h1> <a class="navbar-brand" href="<?php echo base_url() ?>/translate/">Translate</a></h1>         
 			   </div>
 				<div class=" border-bottom">
 	        	<div class="full-left">
