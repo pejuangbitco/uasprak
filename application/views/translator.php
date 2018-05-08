@@ -5,7 +5,7 @@
 		    <div class="banner">
 		   
 				<h2>
-				<a href="index.html">Let's Translate</a>
+				<a href="<?= base_url() ?>">Let's Translate</a>
 				</h2>
 				<?php if ($this->session->flashdata('msg')) 
 				{ 

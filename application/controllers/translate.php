@@ -18,8 +18,9 @@ class Translate extends CI_Controller {
 		if ($this->input->post('submit')) {
 			//echo "workkkkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkworkwork";
 			$this->data['kata'] = $this->input->post('kata');
-
+			//print_r($this->data['kata']); exit;
 			//explode(" ", $this->data['kata']);
+			if (empty($this->data['kata'])) redirect();
 			$this->data['eng'] = $this->cek_bahasa(explode(" ", $this->data['kata']));
 			// echo $this->data['eng'];
 			// exit;
@@ -38,7 +39,7 @@ class Translate extends CI_Controller {
 
 	private function cek_bahasa($data) {
 
-		if (count($data) <= 0) return 'error';
+		if (count($data) <= 0) return 'hmm';
 
 		if (count($data) >= 1 && count($data) <= 3) {
 			//echo "mmmmmmmmmmmmmmmm   mmm";
@@ -54,6 +55,7 @@ class Translate extends CI_Controller {
 
 			$eng = $s->eng . ' ' . $v->eng . ' the ' . $o->eng;
 			//print_r($eng); exit;
+			if (empty($s) || empty($v) || empty($o)) return 'error';
 			return $eng;
 		}
 
@@ -74,15 +76,17 @@ class Translate extends CI_Controller {
 				$k = $this->Mymodel->getKet($data[3]);
 				if (empty($k)) {
 					$t = $this->Mymodel->getTime($data[3]);
+					if (empty($s) || empty($v) || empty($o) || empty($t)) return 'error';
 					return $s->eng. ' ' . $v->eng . ' the ' . $o->eng . ' ' . $t->eng;					
 				}
 
 				if (count($data) > 4 ) {
 					$t = $this->Mymodel->getTime($data[4]);
 					//print_r($t); exit;
+					if (empty($s) || empty($v) || empty($o) || empty($t) || empty($k)) return 'error';
 					return $s->eng. ' ' . $v->eng . ' the ' . $k->eng . ' ' . $o->eng . ' ' . $t->eng;
 				}
-
+				if (empty($s) || empty($v) || empty($o) || empty($k)) return 'error';
 				$eng = $s->eng . ' ' . $v->eng . ' the ' . $k->eng . ' ' . $o->eng;
 				//print_r($eng); exit;
 				return $eng;
@@ -96,14 +100,16 @@ class Translate extends CI_Controller {
 				$t = $this->Mymodel->getTime($data[4]);
 				if (empty($t)) {
 					$k = $this->Mymodel->getKet($data[4]);
+					if (empty($s) || empty($v) || empty($o) || empty($c) || empty($k)) return 'error';
 					return $s->eng . ' ' . $v->eng . ' ' . $c->eng . ' ' . $k->eng . ' ' . $o->eng . 's ';
 				}
+				if (empty($s) || empty($v) || empty($o) || empty($t) || empty($c)) return 'error';
 				return $s->eng . ' ' . $v->eng . ' ' . $c->eng . ' ' . $o->eng . 's ' . $t->eng;
 			}
 
 			$k = $this->Mymodel->getKet($data[4]);
 			$t = $this->Mymodel->getTime($data[5]);
-
+			if (empty($s) || empty($v) || empty($o) || empty($t) || empty($k) || empty($c)) return 'error';
 			return $s->eng . ' ' . $v->eng . ' ' . $c->eng . ' ' . $k->eng . ' ' . $o->eng . 's ' . $t->eng;
 
 		}
