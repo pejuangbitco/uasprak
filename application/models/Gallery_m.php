@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Silabus_m extends CI_Model {
+class Gallery_m extends CI_Model {
 	private $data;
 
 	public function __construct () {

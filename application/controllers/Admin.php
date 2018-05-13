@@ -306,6 +306,9 @@ class Admin extends CI_Controller
 	}
 
 	public function delete_pengguna($u) {
+		if(!isset($u)) {
+			redirect(base_url("admin/pengguna"));
+		}
 		$this->load->model('login_m');
 		$this->login_m->deleteRow($u);
 		$this->session->set_flashdata('msg', '<p style="color: red;">Delete Data Sukses');
@@ -363,6 +366,9 @@ class Admin extends CI_Controller
 	}
 
 	public function edit_silabus($id) {
+		if(!isset($id)) {
+			redirect(base_url("admin/silabus"));
+		}
 		$this->load->model('silabus_m');
 
 		if ($this->input->POST('submit')) {
@@ -396,8 +402,11 @@ class Admin extends CI_Controller
 	}
 
 	public function delete_silabus($id) {
+		if(!isset($id)) {
+			redirect(base_url("admin/silabus"));
+		}
 		$this->load->model('silabus_m');
-		$this->silabus_m->deleteRow($u);
+		$this->silabus_m->deleteRow($id);
 		$this->session->set_flashdata('msg', '<p style="color: red;">Delete Data Sukses');
 		redirect(base_url("admin/silabus"));
 	}
@@ -408,11 +417,91 @@ class Admin extends CI_Controller
 
 		$data = array (
 			
-			'silabus'	=> $this->silabus_m->getAll(),
-			'title'	=> 'Silabus',
-			'isi'	=> 'lay-admin/silabus_v'
+			'gallery'	=> $this->gallery_m->getAll(),
+			'title'	=> 'Gallery',
+			'isi'	=> 'lay-admin/gallery_v'
 		);
 		
 		$this->load->view('lay-admin/wrapper', $data);
 	}
+
+	public function tambah_gallery() {
+		$this->load->model('gallery_m');
+
+		if ($this->input->POST('submit')) {
+			$id_foto = mt_rand();
+			$img_name = $id_foto . '_' . pathinfo( $_FILES['berkas']['name'], PATHINFO_FILENAME );
+			$img_name = str_replace(" ", '', $img_name);
+			$this->upload( $img_name, '/assets/upload/', 'berkas' );
+			$img_name .= '.jpg';
+			$data = array (
+				'id_gallery' => $id_foto,
+				'caption' => $this->input->POST('caption'),
+				'foto'	=> $img_name
+			);
+
+			$this->gallery_m->insert($data);
+
+
+			$this->session->set_flashdata('msg', '<p style="color: green;">Tambah Data Sukses');
+			redirect(base_url("admin/gallery"));
+			exit;
+		}
+
+		$data = array (
+			
+			'gallery'	=> $this->gallery_m->getAll(),
+			'title'	=> 'Tambah Gallery',
+			'isi'	=> 'lay-admin/tambah_gallery_v'
+		);
+		
+		$this->load->view('lay-admin/wrapper', $data);
+	}
+
+	public function edit_gallery($id) {
+		if(!isset($id)) {
+			redirect(base_url("admin/gallery"));
+		}
+		$this->load->model('gallery_m');
+
+		if ($this->input->POST('submit')) {
+			$id_foto = mt_rand();
+			$img_name = $id_foto . '_' . pathinfo( $_FILES['berkas']['name'], PATHINFO_FILENAME );
+			$img_name = str_replace(" ", '', $img_name);
+			$this->upload( $img_name, '/assets/upload/', 'berkas' );
+			$img_name .= '.jpg';
+			$data = array (
+				
+				'caption' => $this->input->POST('caption'),
+				'foto'	=> $img_name
+			);
+
+			$this->gallery_m->updateRow($id,$data);
+
+
+			$this->session->set_flashdata('msg', '<p style="color: green;">Edit Data Sukses');
+			redirect(base_url("admin/edit_gallery/".$id));
+			exit;
+		}
+
+		$data = array (
+			
+			'gallery'	=> $this->gallery_m->selectRow($id),
+			'title'	=> 'Edit Gallery',
+			'isi'	=> 'lay-admin/edit_gallery_v'
+		);
+		
+		$this->load->view('lay-admin/wrapper', $data);
+	}
+
+	public function delete_gallery($id) {
+		if(!isset($id)) {
+			redirect(base_url("admin/gallery"));
+		}
+		$this->load->model('gallery_m');
+		$this->gallery_m->deleteRow($id);
+		$this->session->set_flashdata('msg', '<p style="color: red;">Delete Data Sukses');
+		redirect(base_url("admin/gallery"));
+	}
+
 }

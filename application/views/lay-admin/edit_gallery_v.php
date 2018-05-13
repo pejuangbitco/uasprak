@@ -5,7 +5,7 @@
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
-                        <li class="breadcrumb-item active">Edit Silabus</li>
+                        <li class="breadcrumb-item active">Tambah Gallery</li>
                     </ol>
                 </div>
             </div>
@@ -15,15 +15,15 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Edit Silabus</h4>
+                        <h4 class="card-title">Tambah Gallery</h4>
                         <!-- <h6 class="card-subtitle">Ketikla berita yang bagus, jangan HOAX</h6> -->
-                        <form method="post" enctype="multipart/form-data" action="<?= base_url('admin/edit_silabus/'.$silabus->id_silabus) ?>">
+                        <form method="post" enctype="multipart/form-data" action="<?= base_url('admin/edit_gallery/'.$gallery->id_gallery) ?>">
                             
                             <div class="form-group row">
-                                <label class="col-lg-12 col-form-label">Nama Silabus<span class="text-danger">*</span></label>
+                                <label class="col-lg-12 col-form-label">Caption<span class="text-danger">*</span></label>
                                 <br>
                                 <div class="col-lg-12 form-validated">
-                                    <input value="<?= $silabus->nama_silabus ?>" type="text" class="form-control"  name="nama_silabus" placeholder="nama silabus" required>
+                                    <input type="text" value="<?= $gallery->caption ?>" class="form-control"  name="caption" placeholder="tulis caption" required>
                                 </div>
                             </div>
 
@@ -48,13 +48,4 @@
         </div>
     
     </div>
-<script>
-  $(function () {
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    
-    CKEDITOR.replace('ckeditor');
-   
-    
-  });
-</script>
+

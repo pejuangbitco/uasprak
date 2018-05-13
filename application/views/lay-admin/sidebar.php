@@ -31,7 +31,7 @@
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-clone"></i><span class="hide-menu">Gallery</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?= base_url('admin/album') ?>">Album</a></li>
-                                <li><a href="<?= base_url('admin/foto') ?>">Foto</a></li>
+                                <li><a href="<?= base_url('admin/gallery') ?>">Foto</a></li>
                             </ul>
                         </li>
 
