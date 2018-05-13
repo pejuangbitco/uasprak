@@ -6,8 +6,8 @@ class Silabus_m extends CI_Model {
 
 	public function __construct () {
 		parent::__construct();
-		$this->data['table']	= 'silabus';
-		$this->data['primary']	= 'id_silabus';
+		$this->data['table']	= 'gallery';
+		$this->data['primary']	= 'id_gallery';
 	}
 
 

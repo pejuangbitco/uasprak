@@ -286,10 +286,12 @@ class Admin extends CI_Controller
 			if (!$q) {
 				$this->session->set_flashdata('msg', '<p style="color: red;">Edit Data Gagal/Username sudah ada</p>');
 				redirect(base_url("admin/edit_pengguna"));
+				exit;
 			}
 
 			$this->session->set_flashdata('msg', '<p style="color: green;">Edit Data Sukses');
 			redirect(base_url("admin/edit_pengguna/".$u));
+			exit;
 		}
 
 		$data = array (
@@ -312,6 +314,97 @@ class Admin extends CI_Controller
 
 	public function silabus() {
 		$this->load->model('silabus_m');
+
+		$data = array (
+			
+			'silabus'	=> $this->silabus_m->getAll(),
+			'title'	=> 'Silabus',
+			'isi'	=> 'lay-admin/silabus_v'
+		);
+		
+		$this->load->view('lay-admin/wrapper', $data);
+	}
+
+	public function tambah_silabus() {
+		$this->load->model('silabus_m');
+
+		if ($this->input->POST('submit')) {
+			$id_foto = mt_rand();
+			$img_name = $id_foto . '_' . pathinfo( $_FILES['berkas']['name'], PATHINFO_FILENAME );
+			$img_name = str_replace(" ", '', $img_name);
+			$this->upload( $img_name, '/assets/upload/', 'berkas' );
+			$img_name .= '.jpg';
+			$data = array (
+				'id_silabus' => $id_foto,
+				'nama_silabus' => $this->input->POST('nama_silabus'),
+				'foto'	=> $img_name
+			);
+
+			$q = $this->silabus_m->insert($data);
+			if (!$q) {
+				$this->session->set_flashdata('msg', '<p style="color: red;">Tambah Data Gagal</p>');
+				redirect(base_url("admin/tambah_silabus"));
+				exit;
+			}
+
+			$this->session->set_flashdata('msg', '<p style="color: green;">Tambah Data Sukses');
+			redirect(base_url("admin/silabus"));
+			exit;
+		}
+
+		$data = array (
+			
+			'silabus'	=> $this->silabus_m->getAll(),
+			'title'	=> 'Tambah Silabus',
+			'isi'	=> 'lay-admin/tambah_silabus_v'
+		);
+		
+		$this->load->view('lay-admin/wrapper', $data);
+	}
+
+	public function edit_silabus($id) {
+		$this->load->model('silabus_m');
+
+		if ($this->input->POST('submit')) {
+			$id_foto = mt_rand();
+			$img_name = $id_foto . '_' . pathinfo( $_FILES['berkas']['name'], PATHINFO_FILENAME );
+			$img_name = str_replace(" ", '', $img_name);
+			$this->upload( $img_name, '/assets/upload/', 'berkas' );
+			$img_name .= '.jpg';
+			$data = array (
+				
+				'nama_silabus' => $this->input->POST('nama_silabus'),
+				'foto'	=> $img_name
+			);
+
+			$this->silabus_m->updateRow($id,$data);
+			
+
+			$this->session->set_flashdata('msg', '<p style="color: green;">Edit Data Sukses');
+			redirect(base_url("admin/edit_silabus/". $id));
+			exit;
+		}
+
+		$data = array (
+			
+			'silabus'	=> $this->silabus_m->selectRow($id),
+			'title'	=> 'Edit Silabus',
+			'isi'	=> 'lay-admin/edit_silabus_v'
+		);
+		
+		$this->load->view('lay-admin/wrapper', $data);
+	}
+
+	public function delete_silabus($id) {
+		$this->load->model('silabus_m');
+		$this->silabus_m->deleteRow($u);
+		$this->session->set_flashdata('msg', '<p style="color: red;">Delete Data Sukses');
+		redirect(base_url("admin/silabus"));
+	}
+
+
+	public function gallery() {
+		$this->load->model('gallery_m');
 
 		$data = array (
 			

@@ -23,7 +23,7 @@
 
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-address-book-o"></i><span class="hide-menu">Silabus</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?= base_url('admin/buat_silabus') ?>">Buat Silabus</a></li>
+                                <li><a href="<?= base_url('admin/tambah_silabus') ?>">Buat Silabus</a></li>
                                 <li><a href="<?= base_url('admin/silabus') ?>">List Silabus</a></li>
                             </ul>
                         </li>

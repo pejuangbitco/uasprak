@@ -5,7 +5,7 @@
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
-                        <li class="breadcrumb-item active">Pengguna</li>
+                        <li class="breadcrumb-item active">Silabus</li>
                     </ol>
                 </div>
             </div>
@@ -14,14 +14,14 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-title">
-                    <h4>List Pengguna </h4>
+                    <h4>List Silabus </h4>
                     <div><?php echo $this->session->flashdata('msg'); ?></div>
                 </div>
                 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <a href="<?= base_url('admin/tambah_pengguna/') ?>" class="btn btn-primary">
-                            Tambah Pengguna
+                        <a href="<?= base_url('admin/tambah_silabus/') ?>" class="btn btn-primary">
+                            Tambah Silabus
                         </a>
                         <table class="table table-hover ">
                             <thead>
@@ -29,26 +29,19 @@
                                     <th>#</th>
                                     <th>Foto</th>
                                     <th>Nama Silabus</th>
-                                    <th>Email</th>
-                                    <th>Username</th>
-                                    <th>Password</th>
-                                    <th>Role</th>
-                                    <th>Jenis Kelamin</th>
+                                    
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i=0; foreach ($pengguna as $key) { ?>
+                                <?php $i=0; foreach ($silabus as $key) { ?>
                                 <tr>
                                     <th scope="row"><?= ++$i ?></th>
-                                    <td><?= $key->nama ?></td>
-                                    <td><?= $key->email ?></td>
-                                    <td><?= $key->username ?></td>
-                                    <td><?= $key->password ?></td>
-                                    <td><?= $key->role ?></td>
-                                    <td><?= $key->nama_gender ?></td>
-                                    <td><a class="btn" href="<?= base_url('admin/edit_pengguna/' . $key->username) ?>"><span class="fa fa-pencil"></span></a>
-                                    <a class="btn" href="<?= base_url('admin/delete_pengguna/' . $key->username) ?>"><span class="fa fa-trash"></span></a>
+                                    <td><img src="<?= base_url('assets/upload/'. $key->foto) ?>" height="55" width="55"></td>
+                                    <td><?= $key->nama_silabus ?></td>
+                                    
+                                    <td><a class="btn" href="<?= base_url('admin/edit_silabus/' . $key->id_silabus) ?>"><span class="fa fa-pencil"></span></a>
+                                    <a class="btn" href="<?= base_url('admin/delete_silabus/' . $key->id_silabus) ?>"><span class="fa fa-trash"></span></a>
                                     </td>
                                     
 
